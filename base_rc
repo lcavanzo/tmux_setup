@@ -7,6 +7,9 @@ unbind C-b
 
 bind b previous-window
 
+# synchronize all panes in a window
+bind y set-window-option synchronize-panes
+
 #setting the delay between prefix and command
 set -s escape-time 1
 
@@ -29,19 +32,28 @@ bind | split-window -h
 bind - split-window -v
 
 # Pane resizing panes with Prefix H,J,K,Lbind -r H resize-pane -L 5
-bind -r H resize-pane -L 5
-bind -r J resize-pane -D 5
-bind -r K resize-pane -U 5
-bind -r L resize-pane -R 5
+#bind -r H resize-pane -L 5
+#bind -r J resize-pane -D 5
+#bind -r K resize-pane -U 5
+#bind -r L resize-pane -R 5
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # mouse support - set to on if you want to use the mouse
 set -g mouse off
 
+# Jump to beginning of the line
+bind a send-prefix
+
 ## set the status line’s colors
-##set -g status-style fg=white,bg=black
+##set -g status-style fg=black,bg=green
 
 ## set the color of the window list
-##setw -g window-status-style fg=cyan,bg=black
+#setw -g window-status-style fg=cyan,bg=black
 
 ## colors for pane borders
 #setw -g pane-border-style fg=green,bg=black
@@ -64,9 +76,6 @@ bind-key -T copy-mode-vi y send-keys -X copy-selection
 bind-key -T copy-mode-vi r send-keys -X rectangle-toggle # first press 'v'
 unbind p
 bind p paste-buffer
-
-# shortcut for synchronize-panes toggle
-bind C-w set-window-option synchronize-panes
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
