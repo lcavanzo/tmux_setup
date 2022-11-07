@@ -21,8 +21,3 @@ tmux new-session -d
 # killing the server is not required, I guess
 tmux kill-server
 
-# restore tmux-resurrection sessions
-echo "alias tma='tmux attach || { (while ! tmux run-shell
-~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; do sleep 0.2; done)& tmux ;
-}'" >> ~/.bashrc
-

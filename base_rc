@@ -28,8 +28,9 @@ bind r source-file ~/.tmux.conf \; display “Reloaded!”
 bind C-a send-prefix
 
 # splitting panes with | and -
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
 
 # Pane resizing panes with Prefix H,J,K,Lbind -r H resize-pane -L 5
 #bind -r H resize-pane -L 5
